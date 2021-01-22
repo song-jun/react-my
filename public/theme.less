@@ -5675,7 +5675,10 @@ form .ant-upload {
   background: #f0f2f5;
 }
 .ant-layout-header {
-  background: @primary-color;
+  background: @primary-color!important;
+  color:#fff;
+  border-left:1px solid rgba(58, 64, 99, 0.5);
+  box-sizing:border-box;
 }
 .ant-layout-footer {
   color: #000000;
@@ -6016,7 +6019,10 @@ form .ant-upload {
   color: @primary-color;
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: color(~`colorPalette("@{primary-color}", 1)`);
+  background-color: color(~`colorPalette("@{primary-color}", 1)`)!important;
+}
+.trigger:hover{
+  color: color(~`colorPalette("@{primary-color}", 1)`)!important;
 }
 .ant-menu-inline,
 .ant-menu-vertical,
@@ -8780,6 +8786,9 @@ h4.ant-typography,
 .ant-menu-root.ant-menu-inline .ant-menu-submenu-title:hover,
 .ant-menu-root.ant-menu-vertical .ant-menu-submenu-title:hover {
   color: #ffffff;
+}
+.ant-menu-dark .ant-menu-inline.ant-menu-sub{
+  box-shadow: none;
 }
 .ant-menu-root.ant-menu-inline .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
 .ant-menu-root.ant-menu-vertical .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,

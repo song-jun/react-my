@@ -1,0 +1,376 @@
+@charset "UTF-8";
+/*
+ * @Description: sass
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2020-12-14 15:11:03
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-22 09:47:21
+ */
+/* 初始化css */
+/* PC端,h5端 */
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 12px "宋体","Arial Narrow",HELVETICA;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: #172c45;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cd0200;
+  text-decoration: underline;
+}
+
+em {
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.mymixin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-shadow: 0 0 10px #666;
+  content: "*";
+  color: #666;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mymixin::after {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  content: " ";
+  /* 只需把black改为其他颜色，箭头就会变成其他颜色。 */
+  border: solid black;
+  /* 我们只需把1px改为其他数字如3px，就得到不同粗细的箭头。 */
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  /* 把3px改为其他数字如5px，箭头就会变大。 */
+  padding: 3px;
+}
+
+.myfunction {
+  font-size: 0.53333rem;
+}
+
+.shadow {
+  box-shadow: 0 0 8px #666 outset;
+}
+
+.shadow-t {
+  text-shadow: 0 2px 2px #666;
+}
+
+.bgImg1 {
+  /* 从上到下，蓝色渐变到红色 */
+  background-image: linear-gradient(blue, red);
+}
+
+.bgImg2 {
+  /* 渐变轴为45度，从蓝色渐变到红色 */
+  background-image: linear-gradient(45deg, blue, red);
+}
+
+.bgImg3 {
+  /* 从右下到左上、从蓝色渐变到红色 */
+  background-image: linear-gradient(to left top, blue, red);
+}
+
+.bgImg3 {
+  /* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
+  background-image: linear-gradient(0, blue, green 50%, red);
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-b {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.ell1 {
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.ell2 {
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.ml10 {
+  margin-left: 10px !important;
+}
+
+.mr10 {
+  margin-right: 10px !important;
+}
+
+.text-l {
+  text-align: left;
+}
+
+.text-r {
+  text-align: right;
+}
+
+.text-b {
+  font-weight: bold;
+}
+
+.text-c {
+  text-align: center;
+}
+
+.text-u {
+  text-decoration: underline;
+}
+
+.text-line {
+  text-decoration: line-through;
+}
+
+.text-lc {
+  text-decoration-color: #cd0200;
+  -moz-text-decoration-color: #cd0200;
+}
+
+.text-Abc {
+  text-transform: Capitalize;
+}
+
+.text-ABC {
+  text-transform: Uppercase;
+}
+
+.text-abc {
+  text-transform: Lowercase;
+}
+
+.text-p::before {
+  content: "¥";
+  font-size: 80%;
+  color: red;
+  margin-right: 4px;
+}
+
+.com-radius, .com-modal {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.com-bg, .com-modal {
+  background-color: #fff;
+}
+
+.com-border, .com-modal {
+  border: 1px solid #f1f1f1;
+}
+
+.com-modal {
+  position: fixed;
+  z-index: 8888;
+  width: 80%;
+  height: 60%;
+  display: block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.com-btn {
+  font-family: inherit;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #fff;
+  background-color: #409eff;
+  border-color: #409eff;
+  border: 1px solid #dcdfe6;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.com-btn:hover {
+  background: #66b1ff;
+  border-color: #66b1ff;
+  color: #fff;
+}
+
+.bg-mask {
+  background-color: #333333;
+  position: relative;
+}
+
+.bg-mask::after {
+  content: "";
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.clear:after {
+  content: "。";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clear {
+  zoom: 1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.nowrap {
+  word-wrap: normal;
+  white-space: nowrap;
+}
+
+.iswrap {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.fix-m {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.fix-l {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.fix-r {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.fix-b {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
