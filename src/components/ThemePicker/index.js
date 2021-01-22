@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-21 19:10:10
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-21 19:11:05
+ * @LastEditTime: 2021-01-22 15:50:19
  */
 import React, { Component } from 'react';
 import { SketchPicker } from 'react-color';
@@ -27,6 +27,7 @@ class ThemePicker extends Component {
         localStorage.setItem('@primary-color', color.hex);
         window.less.modifyVars({
             '@primary-color': color.hex,
+            '@init-color': color.hex
         });
     };
     render() {

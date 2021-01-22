@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2021-01-22 09:55:47
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-22 15:56:54
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,9 +36,15 @@
   <script src="%PUBLIC_URL%/assets/less.min.js"></script>
   <script>
     const primaryColor = localStorage.getItem('@primary-color');
+    let initColor = localStorage.getItem('@init-color');
+    if (primaryColor !== '#1890ff') {
+      initColor = primaryColor;
+    }
+    console.log('log',initColor);
     primaryColor &&
       window.less.modifyVars({
         '@primary-color': primaryColor,
+        '@init-color': initColor
       });
   </script>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>

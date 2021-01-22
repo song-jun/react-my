@@ -37,10 +37,13 @@ class HeaderBar extends React.Component {
     }
   }
   reset = () => {
-    let color = '#313653'
+    let initColor = '#313653';
+    let color = '#1890ff';
     localStorage.setItem('@primary-color', color);
+    localStorage.setItem('@init-color', initColor);
     window.less.modifyVars({
       '@primary-color': color,
+      '@init-color':initColor
     });
   }
   logout = () => {

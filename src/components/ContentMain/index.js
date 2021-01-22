@@ -1,9 +1,20 @@
+/*
+ * @Description: 
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2021-01-22 09:55:47
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-22 16:55:02
+ */
 import React from 'react'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
 import LoadableComponent from '../../utils/LoadableComponent'
 import PrivateRoute from '../PrivateRoute'
 
 const Home = LoadableComponent(()=>import('../../routes/Home/index'))  //参数一定要是函数，否则不会懒加载，只会代码拆分
+
+//Test
+const Test = LoadableComponent(()=>import('../../routes/Test/index'))
 
 //基本组件Demo
 const ButtonDemo = LoadableComponent(()=>import('../../routes/General/ButtonDemo/index'))
@@ -51,6 +62,8 @@ class ContentMain extends React.Component {
         <Switch>
           <PrivateRoute exact path='/home' component={Home}/>
 
+          <PrivateRoute exact path='/home/test' component={Test}/>
+
           <PrivateRoute exact path='/home/general/button' component={ButtonDemo}/>
           <PrivateRoute exact path='/home/general/icon' component={IconDemo}/>
 
@@ -81,7 +94,9 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/home/other/springText' component={SpringText}/>
 
           <PrivateRoute exact path='/home/about' component={About}/>
-
+          {/* 404页面跳转 */}
+          <PrivateRoute  component={ErrorPage}/>
+          {/* 重定向主页面 */}
           <Redirect exact from='/' to='/home'/>
         </Switch>
       </div>

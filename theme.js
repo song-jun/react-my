@@ -1,6 +1,13 @@
+/*
+ * @Description: 
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2021-01-22 09:55:48
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-22 15:12:37
+ */
 const path = require('path');
 const { generateTheme } = require('antd-theme-generator');
-
 const options = {
     antDir: path.join(__dirname, './node_modules/antd'),
     stylesDir: path.join(__dirname, './src/style/antd'),

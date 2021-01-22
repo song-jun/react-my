@@ -80,6 +80,11 @@ const menus = [
     ]
   },
   {
+    title: 'Test',
+    icon: 'info-circle-o',
+    key: '/home/test'
+  },
+  {
     title: '关于',
     icon: 'info-circle-o',
     key: '/home/about'
