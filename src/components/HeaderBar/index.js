@@ -9,14 +9,14 @@ import { isAuthenticated } from '../../utils/Session'
 @withRouter @inject('appStore') @observer
 class HeaderBar extends React.Component {
   state = {
-    iShow:false,
+    iShow: false,
     icon: 'arrows-alt',
     count: 100,
     visible: false,
     avatar: require('./img/04.jpg')
   }
 
-  componentDidMount () {
+  componentDidMount() {
     screenfull.onchange(() => {
       this.setState({
         icon: screenfull.isFullscreen ? 'shrink' : 'arrows-alt'
@@ -24,7 +24,7 @@ class HeaderBar extends React.Component {
     })
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     screenfull.off('change')
   }
 
@@ -36,18 +36,25 @@ class HeaderBar extends React.Component {
       screenfull.toggle()
     }
   }
+  reset = () => {
+    let color = '#313653'
+    localStorage.setItem('@primary-color', color);
+    window.less.modifyVars({
+      '@primary-color': color,
+    });
+  }
   logout = () => {
     this.props.appStore.toggleLogin(false)
     this.props.history.push(this.props.location.pathname)
   }
 
-  render () {
-    const {icon, count, visible, avatar} = this.state
-    const {appStore, collapsed, location} = this.props
+  render() {
+    const { icon, count, visible, avatar } = this.state
+    const { appStore, collapsed, location } = this.props
     const notLogin = (
       <div>
-        <Link to={{pathname: '/login', state: {from: location}}} style={{color: 'rgba(0, 0, 0, 0.65)'}}>登录</Link>&nbsp;
-        <img src={require('../../assets/img/defaultUser.jpg')} alt=""/>
+        <Link to={{ pathname: '/login', state: { from: location } }} style={{ color: 'rgba(0, 0, 0, 0.65)' }}>登录</Link>&nbsp;
+        <img src={require('../../assets/img/defaultUser.jpg')} alt="" />
       </div>
     )
     const menu = (
@@ -58,6 +65,7 @@ class HeaderBar extends React.Component {
           <Menu.Item><span onClick={this.logout}>退出登录</span></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup title='设置中心' className='menu-group'>
+          <Menu.Item><span onClick={this.reset}>恢复默认主题</span></Menu.Item>
           <Menu.Item>个人设置</Menu.Item>
           <Menu.Item>系统设置</Menu.Item>
         </Menu.ItemGroup>
@@ -65,7 +73,7 @@ class HeaderBar extends React.Component {
     )
     const login = (
       <Dropdown overlay={menu}>
-        <img onClick={() => this.setState({visible: true})} src={avatar} alt=""/>
+        <img onClick={() => this.setState({ visible: true })} src={avatar} alt="" />
       </Dropdown>
     )
     return (
@@ -73,13 +81,13 @@ class HeaderBar extends React.Component {
         <Icon
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           className='trigger'
-          onClick={this.toggle}/>
-        <div style={{height: '64px', float: 'right'}}>
+          onClick={this.toggle} />
+        <div style={{ height: '64px', float: 'right' }}>
           <ul className='header-ul'>
-            <li><Icon type={icon} onClick={this.screenfullToggle}/></li>
-            <li onClick={() => this.setState({count: 0})}>
-              <Badge count={appStore.isLogin ? count : 0} overflowCount={99} style={{marginRight: -17}}>
-                <Icon type="notification"/>
+            <li><Icon type={icon} onClick={this.screenfullToggle} /></li>
+            <li onClick={() => this.setState({ count: 0 })}>
+              <Badge count={appStore.isLogin ? count : 0} overflowCount={99} style={{ marginRight: -17 }}>
+                <Icon type="notification" />
               </Badge>
             </li>
             <li>
@@ -91,8 +99,8 @@ class HeaderBar extends React.Component {
           footer={null} closable={false}
           visible={visible}
           wrapClassName="vertical-center-modal"
-          onCancel={() => this.setState({visible: false})}>
-          <img src={avatar} alt="" width='100%'/>
+          onCancel={() => this.setState({ visible: false })}>
+          <img src={avatar} alt="" width='100%' />
         </Modal>
       </div>
     )
