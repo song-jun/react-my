@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-20 19:49:01
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-22 09:38:08
+ * @LastEditTime: 2021-01-22 10:23:28
  */
 import React from 'react'
 import $ from 'jquery'
@@ -67,7 +67,7 @@ class Index extends React.Component {
             <Content className='content-box'>
               <ContentMain />
             </Content>
-            <Footer style={{ textAlign: 'center' }}>React-Admin ©2018 Created by 289097246@qq.com <a rel="noopener noreferrer" target='_blank' href='https://github.com/zhangZhiHao1996/react-admin-master'>github地址</a></Footer>
+            <Footer style={{ textAlign: 'center' }}>React-Admin ©2020 Created by 289097246@qq.com <a rel="noopener noreferrer" target='_blank' href='https://github.com/song-jun/react-my'>github地址</a></Footer>
           </Layout>
         </Layout>
       </div>
