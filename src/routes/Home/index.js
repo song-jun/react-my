@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 09:55:48
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 15:18:49
+ * @LastEditTime: 2021-01-25 20:55:07
  */
 import React from 'react'
 import {Carousel} from 'antd'
@@ -16,7 +16,6 @@ const imgs = [
   'http://47.99.130.140/imgs/wallhaven-6k9e7q.jpg',
   'http://47.99.130.140/imgs/photo.jpg',
 ]
-
 
 class Home extends React.Component {
   componentDidMount(){

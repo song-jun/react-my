@@ -4,13 +4,14 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 11:13:59
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 16:20:49
+ * @LastEditTime: 2021-01-25 20:13:07
  */
 import React, { Component } from 'react'
 import $ from 'jquery'
 import { withRouter } from 'react-router-dom'
 import { Button, Divider, Row, Col } from 'antd'
 import Prompt from '../Prompt'
+import Son from './son'
 
 @withRouter
 // 每一个 extends Component 的 class 都是一个组件
@@ -122,6 +123,7 @@ class Header extends Component {
         <br />
         <Button type="primary" onClick={this.getPageQuery}>点击跳转（query传参）</Button>
         <Prompt message="确定要离开？" when={when} />
+        <Son></Son>
       </div>
     )
   }

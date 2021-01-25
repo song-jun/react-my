@@ -1,5 +1,5 @@
 import React from 'react'
-import {Icon, Card, BackTop, Anchor, Affix} from 'antd'
+import { Icon, Card, BackTop, Anchor, Affix, Button } from 'antd'
 // import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
 
@@ -27,6 +27,14 @@ const icons = [
 ];
 
 class IconDemo extends React.Component {
+  getPage = () => {
+    this.props.history.push({
+      pathname: '/home/general/button',
+      query: {
+        id: 12
+      }
+    })
+  }
   render() {
     const cardContent = '使用Icon标签声明组件，指定图标对应的 type 属性。'
     const cardContent2 = `我们为每个图标赋予了语义化的命名，命名规则如下:
@@ -37,8 +45,9 @@ class IconDemo extends React.Component {
     return (
       <div>
         {/* <CustomBreadcrumb arr={['基本','图标']}/> */}
-        <TypingCard title='如何使用' source={cardContent} id='howUse'/>
-        <TypingCard title='图标的命名规范' id='standard' source={cardContent2} height={206}/>
+        <Button type='primary' onClick={this.getPage}>传参</Button>
+        <TypingCard title='如何使用' source={cardContent} id='howUse' />
+        <TypingCard title='图标的命名规范' id='standard' source={cardContent2} height={206} />
         {
           icons.map(item => {
             return (
@@ -47,7 +56,7 @@ class IconDemo extends React.Component {
                   item.list.map(icon => {
                     return (
                       <Card.Grid style={styles.gridItem} key={icon}>
-                        <Icon type={icon} style={styles.icon}/><span>{icon}</span>
+                        <Icon type={icon} style={styles.icon} /><span>{icon}</span>
                       </Card.Grid>
                     )
                   })
@@ -56,15 +65,15 @@ class IconDemo extends React.Component {
             )
           })
         }
-        <BackTop visibilityHeight={200} style={{right: 50}}/>
+        <BackTop visibilityHeight={200} style={{ right: 50 }} />
         <Affix style={styles.affixBox}>
           <Anchor offsetTop={50} affix={false}>
-            <Anchor.Link href='#howUse' title='如何使用'/>
-            <Anchor.Link href='#standard' title='图标的命名规范'/>
-            <Anchor.Link href='#direction' title='方向性图标'/>
-            <Anchor.Link href='#suggestion' title='提示建议性图标'/>
-            <Anchor.Link href='#logo' title='网站通用图标'/>
-            <Anchor.Link href='#other' title='品牌和标识'/>
+            <Anchor.Link href='#howUse' title='如何使用' />
+            <Anchor.Link href='#standard' title='图标的命名规范' />
+            <Anchor.Link href='#direction' title='方向性图标' />
+            <Anchor.Link href='#suggestion' title='提示建议性图标' />
+            <Anchor.Link href='#logo' title='网站通用图标' />
+            <Anchor.Link href='#other' title='品牌和标识' />
           </Anchor>
         </Affix>
       </div>

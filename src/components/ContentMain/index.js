@@ -4,13 +4,26 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 09:55:47
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 17:37:57
+ * @LastEditTime: 2021-01-25 20:51:27
  */
 import React from 'react'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
 import LoadableComponent from '../../utils/LoadableComponent'
 import PrivateRoute from '../PrivateRoute'
+import { Modal } from 'antd'
+import { HashRouter as Router } from "react-router-dom"
 
+const customConfirm = (message, callback) => {
+  Modal.confirm({
+    title: message,
+    onCancel: () => {
+      callback(false);
+    },
+    onOk: () => {
+      callback(true);
+    }
+  })
+}
 const Home = LoadableComponent(() => import('../../routes/Home/index'))  //参数一定要是函数，否则不会懒加载，只会代码拆分
 
 //Test
@@ -54,13 +67,14 @@ const SpringText = LoadableComponent(() => import('../../routes/Other/SpringText
 //关于
 const About = LoadableComponent(() => import('../../routes/About/index'))
 
+
 @withRouter
 class ContentMain extends React.Component {
   componentWillMount() {
     this.props.history.listen((location) => {  //在这里监听location对象
       switch (location.pathname) {   //根据路径不同切换不同的浏览器title
         case '/home': document.title = 'React Admin - 主页'; break;
-        default:  document.title = 'React Admin'; break;
+        default: document.title = 'React Admin'; break;
       }
     })
   }
@@ -69,8 +83,6 @@ class ContentMain extends React.Component {
       <div style={{ padding: 16, position: 'relative' }}>
         <Switch>
           <PrivateRoute exact path='/home' component={Home} />
-
-          <PrivateRoute exact path='/home/test' component={Test} />
 
           <PrivateRoute exact path='/home/general/button' component={ButtonDemo} />
           <PrivateRoute exact path='/home/general/icon' component={IconDemo} />
@@ -104,6 +116,12 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/home/about' component={About} />
           {/* 重定向主页面 */}
           <Redirect exact from='/' to='/home' />
+
+          {/* 注意，必须放在404页面前面，否则跳转到404 */}
+          <Router getUserConfirmation={customConfirm}>
+            <PrivateRoute exact path='/home/test' component={Test} />
+          </Router>
+          
           {/* 404页面跳转 */}
           <PrivateRoute component={ErrorPage} />
         </Switch>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Row, Col, Card, Icon, Radio, Dropdown, Menu, message} from 'antd'
+import { Button, Row, Col, Card, Icon, Radio, Dropdown, Menu, message } from 'antd'
 // import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
 
@@ -19,8 +19,12 @@ class ButtonDemo extends React.Component {
     message.info(`Click on menu ${e.key} item.`)
   }
 
+  componentDidMount() {
+    console.log('传参', this.props.location);
+  }
+  
   render() {
-    const {size, loading, iconLoading} = this.state
+    const { size, loading, iconLoading } = this.state
     const menu = (
       <Menu onClick={this.handleMenuClick}>
         <Menu.Item key="1">1st item</Menu.Item>
@@ -47,20 +51,20 @@ class ButtonDemo extends React.Component {
                 <Radio.Button value="default">Default</Radio.Button>
                 <Radio.Button value="small">Small</Radio.Button>
               </Radio.Group>
-              <p style={{marginTop: '1em'}}>
+              <p style={{ marginTop: '1em' }}>
                 <Button type="primary" size={size}>Primary</Button>&emsp;
                 <Button size={this.state.size}>Default</Button>&emsp;
                 <Button type="dashed" size={size}>Dashed</Button>&emsp;
                 <Button type="danger" size={size}>Danger</Button>
               </p>
               <p>
-                <Button shape='circle' type='primary' icon="download" size={size}/>&emsp;
+                <Button shape='circle' type='primary' icon="download" size={size} />&emsp;
                 <Button type="primary" icon="download" size={size}>Download</Button>
               </p>
               <div>
                 <Button.Group size={size}>
-                  <Button><Icon type="left"/>Backward</Button>&emsp;
-                  <Button>Forward<Icon type="right"/></Button>
+                  <Button><Icon type="left" />Backward</Button>&emsp;
+                  <Button>Forward<Icon type="right" /></Button>
                 </Button.Group>
               </div>
             </Card>
@@ -68,15 +72,15 @@ class ButtonDemo extends React.Component {
           <Col span={12}>
             <Card bordered={false} className='card-item'>
               <p>
-                <Button type="primary" shape="circle" icon="search"/>&emsp;
+                <Button type="primary" shape="circle" icon="search" />&emsp;
                 <Button type="primary" icon="search">Search</Button>&emsp;
-                <Button shape="circle" icon="search"/>&emsp;
+                <Button shape="circle" icon="search" />&emsp;
                 <Button icon="search">Search</Button>&emsp;
               </p>
-              <p style={{marginBottom: 0}}>
-                <Button shape="circle" icon="search"/>&emsp;
+              <p style={{ marginBottom: 0 }}>
+                <Button shape="circle" icon="search" />&emsp;
                 <Button icon="search">Search</Button>&emsp;
-                <Button type="dashed" shape="circle" icon="search"/>&emsp;
+                <Button type="dashed" shape="circle" icon="search" />&emsp;
                 <Button type="dashed" icon="search">Search</Button>
               </p>
             </Card>
@@ -84,17 +88,17 @@ class ButtonDemo extends React.Component {
               <Button type="primary">primary</Button>&emsp;
               <Button>secondary</Button>&emsp;
               <Dropdown overlay={menu}>
-                <Button>Button<Icon type='down'/></Button>
+                <Button>Button<Icon type='down' /></Button>
               </Dropdown>
             </Card>
             <Card bordered={false} className='card-item'>
               <p>
                 <Button loading type='primary'>Loading</Button>&emsp;
-                <Button type='primary' loading shape='circle'/>
+                <Button type='primary' loading shape='circle' />
               </p>
               <div>
-                <Button loading={loading} onClick={() => this.setState({loading: true})}>Click me</Button>&emsp;
-                <Button loading={iconLoading} onClick={() => this.setState({iconLoading: true})} icon='poweroff'>Click
+                <Button loading={loading} onClick={() => this.setState({ loading: true })}>Click me</Button>&emsp;
+                <Button loading={iconLoading} onClick={() => this.setState({ iconLoading: true })} icon='poweroff'>Click
                   me</Button>
               </div>
             </Card>

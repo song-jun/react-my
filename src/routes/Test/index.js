@@ -4,33 +4,37 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 11:13:59
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 14:57:11
+ * @LastEditTime: 2021-01-25 20:13:16
  */
-import React, { Component } from 'react';
-import { Divider, Row, Col} from 'antd'
+import React, { Component } from 'react'
+import { Divider, Row, Col } from 'antd'
 import Test from '../../components/Test'
 import './index.less'
 
+export const { Provider, Consumer } = React.createContext("默认名称")
 // 每一个 extends Component 的 class 都是一个组件
 class Header extends Component {
   state = {
     data: [1, 2, 3],
     msg: 1314520,
     num: 0,
-    test:0,
-    iShow:false
+    test: 0,
+    iShow: false,
+    name:'测试'
   }
-  componentDidMount(){
-    setTimeout(()=>{
+  componentDidMount() {
+    setTimeout(() => {
       this.setState({
-        msg:520
+        msg: 520,
+        name:'测试2'
       })
-    },2000)
-    setTimeout(()=>{
+    }, 2000)
+    setTimeout(() => {
       this.setState({
-        iShow:true
+        iShow: true,
+        name:'测试4'
       })
-    },4000)
+    }, 4000)
   }
   getData = (data) => {
     console.log('getData', data)
@@ -58,7 +62,9 @@ class Header extends Component {
           })}
         </Row>
         <Divider orientation="left">num:{num}</Divider>
-        <Test getData={this.getData} iShow={this.state.iShow} msg={this.state.msg} />
+        <Provider value={this.state.name}>
+          <Test getData={this.getData} iShow={this.state.iShow} msg={this.state.msg} />
+        </Provider>
       </div>
     )
   }
