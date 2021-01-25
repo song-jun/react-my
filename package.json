@@ -76,6 +76,11 @@
     "test": "node scripts/test.js --env=jsdom",
     "git": "bash git.sh"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'husky'"
+    }
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
