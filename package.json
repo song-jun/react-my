@@ -39,6 +39,7 @@
     "gsap": "^2.0.1",
     "html-to-draftjs": "^1.4.0",
     "html-webpack-plugin": "2.29.0",
+    "husky": "^4.3.8",
     "jest": "20.0.4",
     "jquery": "^3.5.1",
     "less": "^3.9.0",
