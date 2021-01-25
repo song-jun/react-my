@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2021-01-22 09:55:48
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-25 15:18:49
+ */
 import React from 'react'
 import {Carousel} from 'antd'
 import './style.css'
@@ -11,6 +19,9 @@ const imgs = [
 
 
 class Home extends React.Component {
+  componentDidMount(){
+    console.log('传参', this.props.location);
+  }
   render() {
     return (
       <div style={styles.bg} className='home'>

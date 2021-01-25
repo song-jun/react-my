@@ -4,19 +4,23 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 11:13:59
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 10:56:44
+ * @LastEditTime: 2021-01-25 16:20:49
  */
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import $ from 'jquery'
+import { withRouter } from 'react-router-dom'
 import { Button, Divider, Row, Col } from 'antd'
+import Prompt from '../Prompt'
 
+@withRouter
 // 每一个 extends Component 的 class 都是一个组件
 class Header extends Component {
   state = {
     data: [11, 22, 33],
     msg: this.props.msg,
+    iShow: this.props.iShow,
+    when: false,
     num: 0,
-    iShow:this.props.iShow
   }
   // UNSAFE_componentWillMount() {
   //   console.log('UNSAFE_componentWillMount', this.state);
@@ -26,10 +30,10 @@ class Header extends Component {
   }
   // 在getDerivedStateFromProps中进行state的改变
   static getDerivedStateFromProps(props, state) {
-    console.log('getDerivedStateFromProps',props,state,$);
+    console.log('getDerivedStateFromProps', props, state, $);
     return {
       msg: props.msg,
-      iShow:props.iShow
+      iShow: props.iShow
     }
   }
   // UNSAFE_componentWillReceiveProps(nextProps) {
@@ -72,9 +76,36 @@ class Header extends Component {
     })
     this.props.getData(num)
   }
+  getPageState = () => {
+    this.setState({
+      when: true
+    })
+    setTimeout(() => {
+      this.props.history.push({
+        pathname: '/home',
+        state: {
+          id: 20
+        }
+      })
+    });
+  }
+  getPageQuery = () => {
+    this.setState({
+      when: true
+    })
+    setTimeout(() => {
+      this.props.history.push({
+        pathname: '/home',
+        query: {
+          id: 12
+        }
+      })
+    });
+  }
   render() {
-    console.log('render', 8888);
-    let msg = this.state.msg,iShow = this.state.iShow;
+    let msg = this.state.msg, iShow = this.state.iShow,
+      when = this.state.when
+    console.log('render', 8888, when);
     return (
       <div>
         <Row gutter={16}>
@@ -84,8 +115,13 @@ class Header extends Component {
         <Divider orientation="left">我的子组件:{msg}</Divider>
         {
           // 动态加class,条件渲染
-          iShow?<Divider className={`test ${iShow?'active':''}`} orientation="left">iShow:{JSON.stringify(iShow)}</Divider>:null
+          iShow ? <Divider className={`test ${iShow ? 'active' : ''}`} orientation="left">iShow:{JSON.stringify(iShow)}</Divider> : null
         }
+        <Button type="primary" onClick={this.getPageState}>点击跳转（state传参）</Button>
+        <br />
+        <br />
+        <Button type="primary" onClick={this.getPageQuery}>点击跳转（query传参）</Button>
+        <Prompt message="确定要离开？" when={when} />
       </div>
     )
   }
