@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-20 19:49:01
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-22 10:23:28
+ * @LastEditTime: 2021-01-25 11:01:06
  */
 import React from 'react'
 import $ from 'jquery'
@@ -27,11 +27,18 @@ class Index extends React.Component {
   }
   componentDidMount() {
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log('UNSAFE_componentWillReceiveProps',this.props.appStore.arr,nextProps);
+  }
+  UNSAFE_componentWillUpdate() {
+  }
+  shouldComponentUpdate(nextProps){
+    return nextProps;
   }
   componentDidUpdate() {
     let collapsed = this.state.collapsed
     setTimeout(() => {
+      console.log('ul',$('.ant-menu-submenu-placement-rightTop ul'))
       let temp = $('.ant-menu-submenu-placement-rightTop ul')
       if (collapsed) {
         temp.addClass('ant-menu-hidden')

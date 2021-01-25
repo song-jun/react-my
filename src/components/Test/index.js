@@ -4,20 +4,57 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 11:13:59
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-22 16:41:25
+ * @LastEditTime: 2021-01-25 10:56:44
  */
 import React, { Component } from 'react';
-import { Button, Divider, Row, Col} from 'antd'
+import $ from 'jquery'
+import { Button, Divider, Row, Col } from 'antd'
 
 // 每一个 extends Component 的 class 都是一个组件
 class Header extends Component {
   state = {
     data: [11, 22, 33],
     msg: this.props.msg,
-    num: 0
+    num: 0,
+    iShow:this.props.iShow
   }
+  // UNSAFE_componentWillMount() {
+  //   console.log('UNSAFE_componentWillMount', this.state);
+  // }
   componentDidMount() {
-    console.log(this.props.msg)
+    console.log('componentDidMount', this.props.msg)
+  }
+  // 在getDerivedStateFromProps中进行state的改变
+  static getDerivedStateFromProps(props, state) {
+    console.log('getDerivedStateFromProps',props,state,$);
+    return {
+      msg: props.msg,
+      iShow:props.iShow
+    }
+  }
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   console.log('UNSAFE_componentWillReceiveProps', nextProps);
+  //   if (nextProps.msg !== this.props.msg) {
+  //     this.setState({
+  //       msg: nextProps.msg
+  //     })
+  //   }
+  // }
+  // UNSAFE_componentWillUpdate() {
+  //   console.log('UNSAFE_componentWillUpdate', this.state);
+  // }
+  shouldComponentUpdate(nextProps) {
+    console.log('shouldComponentUpdate', this.state, nextProps);
+    return nextProps;
+  }
+  componentWillUpdtae() {
+    console.log('componentWillUpdtae', this.state);
+  }
+  componentDidUpdate() {
+    console.log('componentDidUpdate', this.state);
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount', this.state);
   }
   reduce() {
     let { num } = this.state
@@ -36,7 +73,8 @@ class Header extends Component {
     this.props.getData(num)
   }
   render() {
-    let msg = this.state.msg;
+    console.log('render', 8888);
+    let msg = this.state.msg,iShow = this.state.iShow;
     return (
       <div>
         <Row gutter={16}>
@@ -44,6 +82,10 @@ class Header extends Component {
           <Col span={6} ><Button type="primary" onClick={this.reduce.bind(this)}>点击事件-</Button></Col>
         </Row>
         <Divider orientation="left">我的子组件:{msg}</Divider>
+        {
+          // 动态加class,条件渲染
+          iShow?<Divider className={`test ${iShow?'active':''}`} orientation="left">iShow:{JSON.stringify(iShow)}</Divider>:null
+        }
       </div>
     )
   }

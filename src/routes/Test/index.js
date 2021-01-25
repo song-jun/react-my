@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 11:13:59
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-22 16:41:48
+ * @LastEditTime: 2021-01-25 10:45:27
  */
 import React, { Component } from 'react';
 import { Divider, Row, Col} from 'antd'
@@ -16,7 +16,21 @@ class Header extends Component {
   state = {
     data: [1, 2, 3],
     msg: 1314520,
-    num: 0
+    num: 0,
+    test:0,
+    iShow:false
+  }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({
+        msg:520
+      })
+    },2000)
+    setTimeout(()=>{
+      this.setState({
+        iShow:true
+      })
+    },4000)
   }
   getData = (data) => {
     console.log('getData', data)
@@ -44,7 +58,7 @@ class Header extends Component {
           })}
         </Row>
         <Divider orientation="left">num:{num}</Divider>
-        <Test getData={this.getData} msg={this.state.msg} />
+        <Test getData={this.getData} iShow={this.state.iShow} msg={this.state.msg} />
       </div>
     )
   }

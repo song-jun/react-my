@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-22 09:55:47
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-22 16:55:02
+ * @LastEditTime: 2021-01-25 09:31:02
  */
 import React from 'react'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
@@ -94,10 +94,10 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/home/other/springText' component={SpringText}/>
 
           <PrivateRoute exact path='/home/about' component={About}/>
-          {/* 404页面跳转 */}
-          <PrivateRoute  component={ErrorPage}/>
           {/* 重定向主页面 */}
           <Redirect exact from='/' to='/home'/>
+          {/* 404页面跳转 */}
+          <PrivateRoute  component={ErrorPage}/>
         </Switch>
       </div>
     )
