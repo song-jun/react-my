@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-25 09:03:26
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-25 15:07:10
+ * @LastEditTime: 2021-01-25 17:26:44
 -->
 ## react生命周期
 
@@ -94,4 +94,63 @@ state={
     链接方式： <Link to={{pathname:'/demo',state:{id:12,name:'dahuang'}}}>XX</Link> 
     js方式：this.props.history.push({pathname:'/demo',state:{id:12,name:'dahuang'}})
 获取参数： this.props.location.state.name
+```
+
+## react路由引用
+
+- widthRouter的作用
+
+把不是通过路由切换过来的组件中，将react-router 的 history、location、match 三个对象传入props对象上
+
+默认情况下必须是经过路由匹配渲染的组件才存在this.props，才拥有路由参数，才能使用编程式导航的写法，执行this.props.history.push('/detail')跳转到对应路由的页面
+然而不是所有组件都直接与路由相连（通过路由跳转到此组件）的，当这些组件需要路由参数时，使用withRouter就可以给此组件传入路由参数，此时就可以使用this.props
+
+- 使用方法(1)
+
+```js
+import React,{Component} from 'react'
+import {Switch,Route,NavLink,Redirect,withRouter} from 'react-router-dom' //引入withRouter
+import One from './One'
+import NotFound from './NotFound'
+class App extends Component{
+    //此时才能获取this.props,包含（history, match, location）三个对象
+    console.log(this.props);  //输出{match: {…}, location: {…}, history: {…}, 等}
+    render(){return (<div className='app'>
+            <NavLink to='/one/users'>用户列表</NavLink>
+            <NavLink to='/one/companies'>公司列表</NavLink>
+            <Switch>
+                <Route path='/one/:type?' component={One} />
+                <Redirect from='/' to='/one' exact />
+                <Route component={NotFound} />
+            </Switch>
+        </div>)
+    }
+}
+export default withRouter(App);  //这里要执行一下WithRouter
+```
+
+- 使用方法(2)
+
+```js
+import React,{Component} from 'react'
+import {Switch,Route,NavLink,Redirect,withRouter} from 'react-router-dom' //引入withRouter
+import One from './One'
+import NotFound from './NotFound'
+
+@withRouter
+class App extends Component{
+    //此时才能获取this.props,包含（history, match, location）三个对象
+    console.log(this.props);  //输出{match: {…}, location: {…}, history: {…}, 等}
+    render(){return (<div className='app'>
+            <NavLink to='/one/users'>用户列表</NavLink>
+            <NavLink to='/one/companies'>公司列表</NavLink>
+            <Switch>
+                <Route path='/one/:type?' component={One} />
+                <Redirect from='/' to='/one' exact />
+                <Route component={NotFound} />
+            </Switch>
+        </div>)
+    }
+}
+export default App;
 ```
