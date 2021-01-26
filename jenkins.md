@@ -1,4 +1,4 @@
-## wert初始密码路径
+## 初始密码路径
 
 ```ssh
 C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets\initialAdminPassword
