@@ -1,4 +1,4 @@
-## wert初始密码路径
+## 初始密码路径
 
 ```ssh
 C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets\initialAdminPassword
@@ -68,7 +68,7 @@ fi
 - 自定义内容(md格式)
 
 ```md
-- 改动分支: $GIT_BRANCH
-- commit: $SCM_CHANGELOG
-- hash值: $GIT_COMMIT
+- commit：$SCM_CHANGELOG  
+- hash值: $GIT_COMMIT  
+- 改动分支：$GIT_BRANCH
 ```
