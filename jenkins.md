@@ -1,11 +1,3 @@
-<!--
- * @Description: 
- * @Version: 
- * @Autor: MrSong
- * @Date: 2021-01-26 09:07:11
- * @LastEditors: MrSong
- * @LastEditTime: 2021-01-26 19:33:26
--->
 ## 初始密码路径
 
 ```ssh
