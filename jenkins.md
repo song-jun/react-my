@@ -1,4 +1,3 @@
-
 ## 初始密码路径
 
 ```ssh
@@ -69,7 +68,8 @@ fi
 - 自定义内容(md格式)
 
 ```md
-- commit：$SCM_CHANGELOG  
-- hash值: $GIT_COMMIT  
 - 改动分支：$GIT_BRANCH
+- hash值：$GIT_COMMIT
+----------------------------------  
+- commit：$SCM_CHANGELOG
 ```
