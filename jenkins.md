@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 
+ * @Autor: MrSong
+ * @Date: 2021-01-26 09:07:11
+ * @LastEditors: MrSong
+ * @LastEditTime: 2021-01-27 10:44:28
+-->
 ## 初始密码路径
 
 ```ssh
@@ -9,9 +17,13 @@ C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\secrets\
 - Check out to a sub-directory
 仓库的本地子目录
 
+```sh
+D:\Program Files\java\github
+```
+
 ## jenkins默认端口8080
 
-## 设置外网穿透
+## 设置内网穿透
 
 ```sh
 ngrok http 8080
@@ -63,11 +75,25 @@ else
 fi
 ```
 
+## Shell
+
+```sh
+C:\Program Files\Git\bin\bash.exe
+```
+
+## git
+
+```sh
+https://github.com/song-jun/react-my.git
+```
+
 ## 钉钉机器人
 
 - 自定义内容(md格式)
 
 ```md
+api:https://oapi.dingtalk.com/robot/send?access_token=731376a2a91173362f850f629ad8ff386793cb593526f6cc92fe24674d200a31
+name:小懒
 - 改动分支：$GIT_BRANCH
 - hash值：$GIT_COMMIT
 ----------------------------------  
