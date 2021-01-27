@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-26 09:07:11
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-27 10:44:28
+ * @LastEditTime: 2021-01-27 19:08:23
 -->
 ## 初始密码路径
 
@@ -49,6 +49,10 @@ yyyy-MM-dd HH:mm:ss
 
 ```sh
 node -v
+npm -v
+cnpm -v
+yarn -v
+pm2 -v
 
 echo 当前分支：$GIT_BRANCH
 
@@ -73,6 +77,21 @@ else
     echo "SCM_CHANGELOG  如下 $SCM_CHANGELOG"
 
 fi
+# 进入目标文件夹
+cd D:/"Program Files"/java/gitee
+# 安装依赖
+cnpm i
+# 项目打包
+npm run build
+# 进入dist文件夹
+cd dist
+# 删除上次打包生成的压缩文件
+rm -rf test.tar.gz
+# 把生成的项目打包成test方便传输到远程服务器
+tar -zcvf test.tar.gz *
+# 复制目标文件到指定文件夹
+scp test.tar.gz C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/gitee
+cd ../
 ```
 
 ## Shell
@@ -99,3 +118,32 @@ name:小懒
 ----------------------------------  
 - commit：$SCM_CHANGELOG
 ```
+
+## path
+
+```sh
+echo $PATH
+```
+
+```sh
+/c/Users/28909/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/28909/bin:/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/c/Program Files (x86)/NetSarang/Xshell 6:/c/Program Files (x86)/NetSarang/Xftp 6:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/Intel/WiFi/bin:/c/Program Files/Common Files/Intel/WirelessCommon:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/c/Users/28909/AppData/Local/Programs/Python/Python38-32:/c/Program Files/dotnet:/c/Program Files/nodejs:/cmd:/c/Users/28909/AppData/Local/Programs/Python/Python38-32/Scripts:/c/Users/28909/AppData/Local/Programs/Python/Python38-32:/c/Users/28909/AppData/Local/Microsoft/WindowsApps:/d/Microsoft VS Code/bin:/d/phpstudy_pro/Extensions/MySQL5.7.26/bin:/c/Windows/system32:/c/Users/28909/AppData/Local/GitHubDesktop/bi
+```
+
+## publish over ssh配置
+
+```sh
+cd /www/wwwroot/api.songjun520.cn #进入远程服务器目录
+mkdir dist #创建文件夹
+tar -zxvf test.tar.gz -C dist/ #解压test文件到dist文件夹
+rm -rf test.tar.gz #删除文件
+```
+
+Name：对应Publish Over SSH中的私有配置SSH Server Name
+
+Transfer Set
+
+Source files：需要上传的文件（相对于工作区的路径。可以填写多个，默认用,分隔, **/* 表示这个job的工作目录下所有的文件和目录。）
+
+Remove prefix 该操作是针对上面的source files目录，会移除匹配的目录。通常留空
+
+Remote directory：远程服务器目录（比如我这里的test，那么加上  公共配置(系统配置)->私有配置->Remote Directory   最后就是  /xcdata/test/）
