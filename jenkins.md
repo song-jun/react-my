@@ -4,7 +4,7 @@
  * @Autor: MrSong
  * @Date: 2021-01-26 09:07:11
  * @LastEditors: MrSong
- * @LastEditTime: 2021-01-27 19:08:23
+ * @LastEditTime: 2021-02-02 14:47:27
 -->
 ## 初始密码路径
 
@@ -147,3 +147,20 @@ Source files：需要上传的文件（相对于工作区的路径。可以填�
 Remove prefix 该操作是针对上面的source files目录，会移除匹配的目录。通常留空
 
 Remote directory：远程服务器目录（比如我这里的test，那么加上  公共配置(系统配置)->私有配置->Remote Directory   最后就是  /xcdata/test/）
+
+## cnpm not found
+
+- 处理方法
+
+```sh
+echo $PATH
+```
+
+复制PATH,在全局设置里面增加系统Path，粘贴即可,然后重启jenkins
+
+## jenkins cmd重启方法
+
+```sh
+net start jenkins
+net stop jenkins
+```
